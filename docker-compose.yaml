@@ -1,0 +1,7 @@
+services:
+# container for compiling everything
+  ros-devcontainer:
+    image: ros:humble-ros-base
+    volumes:
+      - ./src:/workspace/src
+    command: "tail -f /dev/null"
