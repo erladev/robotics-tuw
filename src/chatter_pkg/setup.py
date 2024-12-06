@@ -21,8 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'basic_node = chatter_pkg.tutorial_node:main'
-            'publisher_node = chatter_pkg.publisher_node:main'
-            'subscriber_node = chatter_pkg.subscriber_node:main'
+           # 'publisher_node = chatter_pkg.publisher_node:main'
+           # 'subscriber_node = chatter_pkg.subscriber_node:main'
         ],
     },
 )
