@@ -1,0 +1,6 @@
+{
+  "package_name": "chatter_interfaces",
+  "non_idl_tuples": [
+    "/workspace/src/chatter_interfaces:msg/TrafficChatterMessage.msg"
+  ]
+}

@@ -1,0 +1,2 @@
+Invoking command in '/workspace/src/chatter_interfaces/build/chatter_interfaces': CMAKE_PREFIX_PATH=/workspace/install/chatter_pkg:/opt/ros/humble /usr/bin/cmake /workspace/src/chatter_interfaces -DCMAKE_INSTALL_PREFIX=/workspace/src/chatter_interfaces/install/chatter_interfaces
+Invoked command in '/workspace/src/chatter_interfaces/build/chatter_interfaces' returned '1': CMAKE_PREFIX_PATH=/workspace/install/chatter_pkg:/opt/ros/humble /usr/bin/cmake /workspace/src/chatter_interfaces -DCMAKE_INSTALL_PREFIX=/workspace/src/chatter_interfaces/install/chatter_interfaces

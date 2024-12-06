@@ -1,0 +1,14 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from chatter_interfaces/msg/TrafficChatterMessage.msg
+// generated code does not contain a copyright notice
+
+
+module chatter_interfaces {
+  module msg {
+    struct TrafficChatterMessage {
+      int64 seq_count;
+
+      string message;
+    };
+  };
+};

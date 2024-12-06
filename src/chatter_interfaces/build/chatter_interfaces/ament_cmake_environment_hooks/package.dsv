@@ -1,0 +1,4 @@
+source;share/chatter_interfaces/local_setup.bash
+source;share/chatter_interfaces/local_setup.dsv
+source;share/chatter_interfaces/local_setup.sh
+source;share/chatter_interfaces/local_setup.zsh

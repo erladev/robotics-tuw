@@ -1,0 +1,219 @@
+[0.010s] Invoking command in '/workspace/src/chatter_interfaces/build/chatter_interfaces': CMAKE_PREFIX_PATH=/workspace/install/chatter_pkg:/opt/ros/humble /usr/bin/cmake /workspace/src/chatter_interfaces -DCMAKE_INSTALL_PREFIX=/workspace/src/chatter_interfaces/install/chatter_interfaces
+[0.022s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.132s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.134s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.137s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.163s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.398s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[0.601s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.796s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.812s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[0.814s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[0.836s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[0.836s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.836s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[0.836s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[0.850s] -- Found PythonExtra: .so  
+[0.877s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.970s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.971s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/workspace/src/chatter_interfaces/build/chatter_interfaces/rosidl_generator_c>;$<BUILD_INTERFACE:/workspace/src/chatter_interfaces/build/chatter_interfaces/rosidl_typesupport_fastrtps_c>;$<BUILD_INTERFACE:/workspace/src/chatter_interfaces/build/chatter_interfaces/rosidl_typesupport_introspection_c>;$<BUILD_INTERFACE:/workspace/src/chatter_interfaces/build/chatter_interfaces/rosidl_generator_cpp>;$<BUILD_INTERFACE:/workspace/src/chatter_interfaces/build/chatter_interfaces/rosidl_typesupport_fastrtps_cpp>;$<BUILD_INTERFACE:/workspace/src/chatter_interfaces/build/chatter_interfaces/rosidl_typesupport_introspection_cpp>;/workspace/src/chatter_interfaces/build/chatter_interfaces/rosidl_generator_c;/workspace/src/chatter_interfaces/build/chatter_interfaces/rosidl_generator_py
+[0.972s] -- Configured cppcheck exclude dirs and/or files: 
+[0.974s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.979s] -- Added test 'lint_cmake' to check CMake code style
+[0.981s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.992s] -- Added test 'uncrustify' to check C / C++ code style
+[0.992s] -- Configured uncrustify additional arguments: 
+[0.993s] -- Added test 'xmllint' to check XML markup files
+[0.997s] -- Configuring done
+[1.027s] -- Generating done
+[1.030s] -- Build files have been written to: /workspace/src/chatter_interfaces/build/chatter_interfaces
+[1.034s] Invoked command in '/workspace/src/chatter_interfaces/build/chatter_interfaces' returned '0': CMAKE_PREFIX_PATH=/workspace/install/chatter_pkg:/opt/ros/humble /usr/bin/cmake /workspace/src/chatter_interfaces -DCMAKE_INSTALL_PREFIX=/workspace/src/chatter_interfaces/install/chatter_interfaces
+[1.036s] Invoking command in '/workspace/src/chatter_interfaces/build/chatter_interfaces': CMAKE_PREFIX_PATH=/workspace/install/chatter_pkg:/opt/ros/humble /usr/bin/cmake --build /workspace/src/chatter_interfaces/build/chatter_interfaces -- -j8 -l8
+[1.070s] [  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.079s] [  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[1.087s] [  6%] Built target ament_cmake_python_copy_chatter_interfaces
+[1.265s] running egg_info
+[1.265s] creating chatter_interfaces.egg-info
+[1.265s] writing chatter_interfaces.egg-info/PKG-INFO
+[1.265s] writing dependency_links to chatter_interfaces.egg-info/dependency_links.txt
+[1.266s] writing top-level names to chatter_interfaces.egg-info/top_level.txt
+[1.266s] writing manifest file 'chatter_interfaces.egg-info/SOURCES.txt'
+[1.267s] reading manifest file 'chatter_interfaces.egg-info/SOURCES.txt'
+[1.268s] writing manifest file 'chatter_interfaces.egg-info/SOURCES.txt'
+[1.290s] [  6%] Built target ament_cmake_python_build_chatter_interfaces_egg
+[1.343s] [  6%] Built target chatter_interfaces__cpp
+[1.353s] [ 16%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[1.353s] [ 16%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[1.353s] [ 16%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[1.364s] [ 19%] [32mBuilding C object CMakeFiles/chatter_interfaces__rosidl_generator_c.dir/rosidl_generator_c/chatter_interfaces/msg/detail/traffic_chatter_message__functions.c.o[0m
+[1.435s] [ 22%] [32m[1mLinking C shared library libchatter_interfaces__rosidl_generator_c.so[0m
+[1.469s] [ 22%] Built target chatter_interfaces__rosidl_generator_c
+[1.479s] [ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[1.482s] [ 29%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[1.482s] [ 32%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.603s] [ 35%] [32mBuilding CXX object CMakeFiles/chatter_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/chatter_interfaces/msg/traffic_chatter_message__type_support.cpp.o[0m
+[1.609s] [ 38%] [32mBuilding CXX object CMakeFiles/chatter_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/chatter_interfaces/msg/detail/traffic_chatter_message__type_support.cpp.o[0m
+[1.661s] [ 41%] [32mBuilding CXX object CMakeFiles/chatter_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/chatter_interfaces/msg/detail/dds_fastrtps/traffic_chatter_message__type_support.cpp.o[0m
+[1.734s] [ 45%] [32mBuilding CXX object CMakeFiles/chatter_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/chatter_interfaces/msg/traffic_chatter_message__type_support.cpp.o[0m
+[1.783s] [ 48%] [32m[1mLinking CXX shared library libchatter_interfaces__rosidl_typesupport_c.so[0m
+[1.795s] [ 54%] [32mBuilding C object CMakeFiles/chatter_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/chatter_interfaces/msg/detail/traffic_chatter_message__type_support.c.o[0m
+[1.795s] [ 54%] [32mBuilding CXX object CMakeFiles/chatter_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/chatter_interfaces/msg/detail/traffic_chatter_message__type_support_c.cpp.o[0m
+[1.837s] [ 54%] Built target chatter_interfaces__rosidl_typesupport_c
+[1.841s] [ 58%] [32m[1mLinking C shared library libchatter_interfaces__rosidl_typesupport_introspection_c.so[0m
+[1.871s] [ 58%] Built target chatter_interfaces__rosidl_typesupport_introspection_c
+[2.020s] [ 61%] [32m[1mLinking CXX shared library libchatter_interfaces__rosidl_typesupport_cpp.so[0m
+[2.062s] [ 64%] [32m[1mLinking CXX shared library libchatter_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[2.069s] [ 64%] Built target chatter_interfaces__rosidl_typesupport_cpp
+[2.123s] [ 64%] Built target chatter_interfaces__rosidl_typesupport_introspection_cpp
+[2.145s] [ 67%] [32m[1mLinking CXX shared library libchatter_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[2.173s] [ 70%] [32m[1mLinking CXX shared library libchatter_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.216s] [ 70%] Built target chatter_interfaces__rosidl_typesupport_fastrtps_c
+[2.251s] [ 70%] Built target chatter_interfaces__rosidl_typesupport_fastrtps_cpp
+[2.271s] [ 70%] Built target chatter_interfaces
+[2.291s] [ 74%] [34m[1mGenerating Python code for ROS interfaces[0m
+[2.540s] [ 74%] Built target chatter_interfaces__py
+[2.559s] [ 77%] [32mBuilding C object CMakeFiles/chatter_interfaces__rosidl_generator_py.dir/rosidl_generator_py/chatter_interfaces/msg/_traffic_chatter_message_s.c.o[0m
+[2.695s] [ 80%] [32m[1mLinking C shared library rosidl_generator_py/chatter_interfaces/libchatter_interfaces__rosidl_generator_py.so[0m
+[2.731s] [ 80%] Built target chatter_interfaces__rosidl_generator_py
+[2.750s] [ 90%] [32mBuilding C object CMakeFiles/chatter_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/chatter_interfaces/_chatter_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[2.751s] [ 90%] [32mBuilding C object CMakeFiles/chatter_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/chatter_interfaces/_chatter_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[2.751s] [ 90%] [32mBuilding C object CMakeFiles/chatter_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/chatter_interfaces/_chatter_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[2.842s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[2.842s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[2.845s] [100%] [32m[1mLinking C shared library rosidl_generator_py/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[2.873s] [100%] Built target chatter_interfaces__rosidl_typesupport_c__pyext
+[2.873s] [100%] Built target chatter_interfaces__rosidl_typesupport_introspection_c__pyext
+[2.877s] [100%] Built target chatter_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[2.887s] Invoked command in '/workspace/src/chatter_interfaces/build/chatter_interfaces' returned '0': CMAKE_PREFIX_PATH=/workspace/install/chatter_pkg:/opt/ros/humble /usr/bin/cmake --build /workspace/src/chatter_interfaces/build/chatter_interfaces -- -j8 -l8
+[2.951s] Invoking command in '/workspace/src/chatter_interfaces/build/chatter_interfaces': CMAKE_PREFIX_PATH=/workspace/install/chatter_pkg:/opt/ros/humble /usr/bin/cmake --install /workspace/src/chatter_interfaces/build/chatter_interfaces
+[2.958s] -- Install configuration: ""
+[2.958s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/ament_index/resource_index/rosidl_interfaces/chatter_interfaces
+[2.959s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces
+[2.959s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg
+[2.959s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/traffic_chatter_message.h
+[2.959s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/rosidl_generator_c__visibility_control.h
+[2.959s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail
+[2.959s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__functions.c
+[2.960s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__struct.h
+[2.960s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__type_support.h
+[2.960s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__functions.h
+[2.960s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/environment/library_path.sh
+[2.960s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/environment/library_path.dsv
+[2.960s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_generator_c.so
+[2.960s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_generator_c.so" to ""
+[2.961s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces
+[2.961s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg
+[2.961s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[2.961s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail
+[2.961s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__rosidl_typesupport_fastrtps_c.h
+[2.961s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_fastrtps_c.so
+[2.961s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[2.961s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces
+[2.962s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg
+[2.962s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail
+[2.962s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__type_support.c
+[2.962s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__rosidl_typesupport_introspection_c.h
+[2.962s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[2.962s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_introspection_c.so
+[2.962s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[2.962s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_c.so
+[2.963s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_c.so" to ""
+[2.963s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces
+[2.963s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg
+[2.963s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/traffic_chatter_message.hpp
+[2.963s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail
+[2.963s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__traits.hpp
+[2.963s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__builder.hpp
+[2.963s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__struct.hpp
+[2.964s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces
+[2.964s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg
+[2.964s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[2.964s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail
+[2.964s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__rosidl_typesupport_fastrtps_cpp.hpp
+[2.964s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/dds_fastrtps
+[2.964s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[2.964s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[2.964s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces
+[2.965s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg
+[2.965s] -- Up-to-date: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail
+[2.965s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__rosidl_typesupport_introspection_cpp.hpp
+[2.965s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/include/chatter_interfaces/chatter_interfaces/msg/detail/traffic_chatter_message__type_support.cpp
+[2.965s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_introspection_cpp.so
+[2.965s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[2.965s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_cpp.so
+[2.965s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_typesupport_cpp.so" to ""
+[2.966s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/environment/pythonpath.sh
+[2.966s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/environment/pythonpath.dsv
+[2.966s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces-0.0.0-py3.10.egg-info
+[2.966s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[2.966s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[2.966s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[2.966s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[2.966s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces
+[2.966s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/_chatter_interfaces_s.ep.rosidl_typesupport_c.c
+[2.967s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[2.967s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[2.967s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/msg
+[2.967s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/msg/__init__.py
+[2.967s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/msg/_traffic_chatter_message_s.c
+[2.967s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/msg/_traffic_chatter_message.py
+[2.967s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/_chatter_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[2.967s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/__init__.py
+[2.968s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/libchatter_interfaces__rosidl_generator_py.so
+[2.968s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/_chatter_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[2.968s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[2.998s] Listing '/workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces'...
+[2.998s] Compiling '/workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/__init__.py'...
+[2.998s] Listing '/workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/msg'...
+[2.998s] Compiling '/workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/msg/__init__.py'...
+[2.998s] Compiling '/workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/msg/_traffic_chatter_message.py'...
+[3.001s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[3.002s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.002s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[3.002s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.003s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[3.003s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/local/lib/python3.10/dist-packages/chatter_interfaces/chatter_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.003s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_generator_py.so
+[3.003s] -- Set runtime path of "/workspace/src/chatter_interfaces/install/chatter_interfaces/lib/libchatter_interfaces__rosidl_generator_py.so" to ""
+[3.004s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/msg/TrafficChatterMessage.idl
+[3.004s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/msg/TrafficChatterMessage.msg
+[3.004s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/ament_index/resource_index/package_run_dependencies/chatter_interfaces
+[3.004s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/ament_index/resource_index/parent_prefix_path/chatter_interfaces
+[3.004s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/environment/ament_prefix_path.sh
+[3.005s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/environment/ament_prefix_path.dsv
+[3.005s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/environment/path.sh
+[3.005s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/environment/path.dsv
+[3.005s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/local_setup.bash
+[3.005s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/local_setup.sh
+[3.005s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/local_setup.zsh
+[3.005s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/local_setup.dsv
+[3.005s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/package.dsv
+[3.005s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/ament_index/resource_index/packages/chatter_interfaces
+[3.006s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/export_chatter_interfaces__rosidl_generator_cExport.cmake
+[3.006s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/export_chatter_interfaces__rosidl_generator_cExport-noconfig.cmake
+[3.006s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/export_chatter_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[3.006s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/export_chatter_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[3.006s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[3.006s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[3.006s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfaces__rosidl_typesupport_cExport.cmake
+[3.007s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[3.007s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/export_chatter_interfaces__rosidl_generator_cppExport.cmake
+[3.007s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/export_chatter_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[3.007s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/export_chatter_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[3.007s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[3.007s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[3.007s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfaces__rosidl_typesupport_cppExport.cmake
+[3.008s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[3.008s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/export_chatter_interfaces__rosidl_generator_pyExport.cmake
+[3.008s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/export_chatter_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[3.008s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/rosidl_cmake-extras.cmake
+[3.008s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[3.008s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[3.008s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[3.008s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[3.009s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[3.009s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[3.009s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfacesConfig.cmake
+[3.009s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/cmake/chatter_interfacesConfig-version.cmake
+[3.009s] -- Installing: /workspace/src/chatter_interfaces/install/chatter_interfaces/share/chatter_interfaces/package.xml
+[3.011s] Invoked command in '/workspace/src/chatter_interfaces/build/chatter_interfaces' returned '0': CMAKE_PREFIX_PATH=/workspace/install/chatter_pkg:/opt/ros/humble /usr/bin/cmake --install /workspace/src/chatter_interfaces/build/chatter_interfaces
