@@ -5,10 +5,10 @@ from chatter_interfaces.msg import TrafficChatterMessage
 
 class SubscriberNode(rclpy.node.Node):
     def __init__(self):
-        super().__init__("publisher_node")
+        super().__init__("subscriber_node")
         self.recv_count = 0
-        self.sub_channel = self.create_subscription("ppmbprob_chatter",
-        self.chatter_message_callback, 10)
+        self.sub_channel = self.create_subscription(TrafficChatterMessage, "ppmrob_chatter",
+        self.message_recv_callback, 10)
         self.get_logger().info("Listener node ACTIVE")
 
     def message_recv_callback(self, msg):

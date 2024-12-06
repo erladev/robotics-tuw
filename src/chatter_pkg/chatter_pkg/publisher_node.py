@@ -1,10 +1,12 @@
 import rclpy
 import rclpy.node
 
+from chatter_interfaces.msg import TrafficChatterMessage
+
 class PublisherNode(rclpy.node.Node):
     def __init__(self):
         super().__init__("publisher_node")
-        self.counter = 0
+        self.seq_counter = 0
         self.pub_channel = self.create_publisher(TrafficChatterMessage, "ppmrob_chatter", 10)
         self.create_timer(1.0, self.timer_callback)
         self.get_logger().info("Talker ACTIVE")
@@ -12,8 +14,8 @@ class PublisherNode(rclpy.node.Node):
     def timer_callback(self):
         self.seq_counter += 1
         msg = TrafficChatterMessage()
-        msg.seq_count = self.counter
-        if (self.seq_counter_%2 == 0):
+        msg.seq_count = self.seq_counter
+        if (self.seq_counter % 2 == 0):
             msg.message="Tick"
         else:
             msg.message="Tock"
