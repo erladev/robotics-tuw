@@ -7,20 +7,29 @@ from rclpy.node import Node
 from std_msgs.msg import String
 import PyQt5
 from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QWidget, QPushButton, QMainWindow
+from PyQt5.QtGui import QPixmap
+import sensor_msgs.msg as sensor_msgs
+
 
 class MyGuiNode(Node):
     def __init__(self):
         super().__init__("simple_gui_node")
+        self.pix = QPixmap()
+        self.seq_count = 0
+        self.chatter_listern_ = self.create_subscription(sensor_msgs.Image,"ppmrob_chatter",
+        self.message_rx_callback, 10)
+        self.get_logger().info("PPMROB Listener startet.")
+        
 
-
+    def message_rx_callback(self, msg):
+        self.seq_count += 1
+        print("received "+str(self.seq_count))
 
 def main(args=None):
     rclpy.init(args=args)
     
     app = QApplication(sys.argv)
     HMI = QMainWindow()
-    #ui  = Ui_MainWindow()
-    #ui.setupUi(HMI)
 
     hmi_node = MyGuiNode()
     executor = MultiThreadedExecutor()
