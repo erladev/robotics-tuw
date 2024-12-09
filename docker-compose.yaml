@@ -5,3 +5,19 @@ services:
     volumes:
       - ./src:/workspace/src
     command: "tail -f /dev/null"
+    networks:
+      - ppmrob
+
+  ros-desktop-full:
+    image: osrf/ros:humble-desktop-full
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+    command: "tail -f /dev/null"
+    networks:
+      - ppmrob
+networks:
+  ppmrob:
+    driver: bridge
