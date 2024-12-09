@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'mission_control_node = a1_mission_control_pkg.mission_control_node:main'
         ],
     },
 )

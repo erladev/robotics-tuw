@@ -12,6 +12,7 @@ services:
     image: osrf/ros:humble-desktop-full
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./src:/workspace/src
     environment:
       - DISPLAY
       - QT_X11_NO_MITSHM=1
