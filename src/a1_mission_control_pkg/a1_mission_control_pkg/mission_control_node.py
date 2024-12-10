@@ -44,9 +44,9 @@ class MyGuiNode(Node):
 
         # Overlay timestamp on the image
         font = cv2.FONT_HERSHEY_SIMPLEX
-        font_scale = 0.7
-        color = (255, 255, 255)  # White text
-        thickness = 2
+        font_scale = 0.4
+        color = (0, 0, 0)  # White text
+        thickness = 1
         text_size = cv2.getTextSize(timestamp, font, font_scale, thickness)[0]
         text_x = self.image.shape[1] - text_size[0] - 10  # 10 px from right edge
         text_y = 30  # 30 px from top edge
