@@ -1,6 +1,8 @@
 
 import rclpy
 import rclpy.node
+from builtin_interfaces.msg import Time
+from rclpy.clock import Clock
 
 import random
 import a1_interfaces.msg as a1_interfaces
@@ -39,11 +41,9 @@ def random_image(size, channels):
     return tuple(random.randint(200, 255) for i in range(size*size*channels))
 
 def convert_to_msg(raw_data, size, channels, encoding):
-    msg = a1_interfaces.StampedImage()
-    msg.seq_number = -1
-    msg.drone_id = -1
-    # msg.timestamp = ?
+    now = Clock().now().to_msg()
     image = sensor_msgs.Image()
+    image.header.stamp = now
     image.height = size
     image.width = size
     image.encoding = encoding

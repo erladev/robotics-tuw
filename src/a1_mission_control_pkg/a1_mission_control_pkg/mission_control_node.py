@@ -11,6 +11,8 @@ from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QWidget, QPushBut
 from PyQt5.QtGui import QPixmap, QImage
 import sensor_msgs.msg as sensor_msgs
 from cv_bridge import CvBridge
+import cv2
+from datetime import datetime
 
 class MyGuiNode(Node):
     def __init__(self):
@@ -31,8 +33,25 @@ class MyGuiNode(Node):
             # Convert ROS Image message to OpenCV format
             cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='rgb8')
             self.image = cv_image
+            self.add_text(msg)
         except Exception as e:
             self.get_logger().error(f"Failed to convert image: {e}")
+
+    def add_text(self, msg):
+        sec = msg.header.stamp.sec
+        nanosec = msg.header.stamp.nanosec
+        timestamp = datetime.fromtimestamp(sec + nanosec / 1e9).strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+
+        # Overlay timestamp on the image
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        font_scale = 0.7
+        color = (255, 255, 255)  # White text
+        thickness = 2
+        text_size = cv2.getTextSize(timestamp, font, font_scale, thickness)[0]
+        text_x = self.image.shape[1] - text_size[0] - 10  # 10 px from right edge
+        text_y = 30  # 30 px from top edge
+        cv2.putText(self.image, timestamp, (text_x, text_y), font, font_scale, color, thickness, cv2.LINE_AA)
+
 
 class MainWindow(QWidget):
     def __init__(self, node):
