@@ -7,6 +7,8 @@ services:
     command: "tail -f /dev/null"
     networks:
       - ppmrob
+    ports:
+      - 9000:9000/udp
 
   ros-desktop-full:
     image: osrf/ros:humble-desktop-full
@@ -19,6 +21,15 @@ services:
     command: "tail -f /dev/null"
     networks:
       - ppmrob
+  
+  conda-practice:
+    image: ppmrob_conda_setup # based on continuumio/miniconda3
+    volumes:
+      - ./src:/workspace/src
+    ports:
+      - 8888:8888
+    command: "tail -f /dev/null"
+
 networks:
   ppmrob:
     driver: bridge
