@@ -4,3 +4,6 @@
 [submodule "src/stella_vslam_ros"]
 	path = src/stella_vslam_ros
 	url = https://github.com/stella-cv/stella_vslam_ros
+[submodule "src/stella_vslam"]
+	path = src/stella_vslam
+	url = https://github.com/stella-cv/stella_vslam
