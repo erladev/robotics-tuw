@@ -1,0 +1,15 @@
+[submodule "stella_vslam_ros"]
+	path = src/stella_vslam_ros
+	url = git@github.com:erladev/stella_vslam_ros.git
+[submodule "src/stella_vslam"]
+	path = src/stella_vslam
+	url = https://github.com/stella-cv/stella_vslam.git
+[submodule "src/socket_publisher"]
+	path = src/socket_publisher
+	url = https://github.com/stella-cv/socket_publisher.git
+[submodule "src/socket_viewer"]
+	path = src/socket_viewer
+	url = https://github.com/stella-cv/socket_viewer.git
+[submodule "src/socket.io-client-cpp"]
+	path = src/socket.io-client-cpp
+	url = https://github.com/shinsumicco/socket.io-client-cpp.git
