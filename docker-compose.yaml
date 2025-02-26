@@ -1,7 +1,7 @@
 services:
 # container for compiling everything
   ros-devcontainer:
-    image: ros:humble-ros-base
+    image: ros:jazzy-ros-base
     volumes:
       - ./src:/workspace/src
     command: "tail -f /dev/null"
@@ -11,7 +11,7 @@ services:
       - 9000:9000/udp
 
   ros-desktop-full:
-    image: osrf/ros:humble-desktop-full
+    image: ros-desktop-custom:latest  # osrf/ros:humble-desktop-full
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ./src:/workspace/src
@@ -19,11 +19,15 @@ services:
       - DISPLAY
       - QT_X11_NO_MITSHM=1
     command: "tail -f /dev/null"
-    networks:
-      - ppmrob
+   # network_mode: host
+    ports:
+      - 3001:3001
+      - 3000:3000
+    #networks:
+    #  - ppmrob
   
   conda-practice:
-    image: ppmrob_conda_setup # based on continuumio/miniconda3
+    image: continuumio/miniconda3 # based on continuumio/miniconda3
     volumes:
       - ./src:/workspace/src
     ports:

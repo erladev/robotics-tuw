@@ -7,3 +7,6 @@
 [submodule "src/stella_vslam"]
 	path = src/stella_vslam
 	url = https://github.com/stella-cv/stella_vslam
+[submodule "DJITelloPy"]
+	path = DJITelloPy
+	url = https://github.com/damiafuentes/DJITelloPy.git
