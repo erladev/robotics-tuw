@@ -1,17 +1,9 @@
 services:
 # container for compiling everything
-  ros-devcontainer:
-    image: ros:jazzy-ros-base
-    volumes:
-      - ./src:/workspace/src
-    command: "tail -f /dev/null"
-    networks:
-      - ppmrob
-    ports:
-      - 9000:9000/udp
-
   ros-desktop-full:
-    image: ros-desktop-custom:latest  # osrf/ros:humble-desktop-full
+    image: ros-desktop-custom2:latest  # osrf/ros:humble-desktop-full
+    build:
+      dockerfile: ./Dockerfile
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ./src:/workspace/src
@@ -25,15 +17,3 @@ services:
       - 3000:3000
     #networks:
     #  - ppmrob
-  
-  conda-practice:
-    image: continuumio/miniconda3 # based on continuumio/miniconda3
-    volumes:
-      - ./src:/workspace/src
-    ports:
-      - 8888:8888
-    command: "tail -f /dev/null"
-
-networks:
-  ppmrob:
-    driver: bridge
