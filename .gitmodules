@@ -19,3 +19,6 @@
 [submodule "src/odom_to_tf_ros2"]
 	path = src/odom_to_tf_ros2
 	url = https://github.com/gstavrinos/odom_to_tf_ros2.git
+[submodule "src/rviz"]
+	path = src/rviz
+	url = https://github.com/ros2/rviz.git
