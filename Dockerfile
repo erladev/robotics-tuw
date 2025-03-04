@@ -1,7 +1,9 @@
-FROM ros-desktop-custom:latest
+FROM osrf/ros:humble-desktop-full
 
 RUN apt update && \
     apt upgrade -y --no-install-recommends
+
+RUN apt install -y autogen autoconf libtool ros-humble-libg2o vim xauth
 
 copy ./src/socket.io-client-cpp/ /tmp/socket.io-client-cpp/
 
@@ -24,8 +26,6 @@ RUN cd /tmp/stella_vslam && \
     make -j6 && \
     make install
 
-RUN rm -fr /tmp/*
-
 copy ./src/socket_publisher/ /tmp/socket_publisher/
 
 RUN cd /tmp/socket_publisher && \
@@ -36,10 +36,6 @@ RUN cd /tmp/socket_publisher && \
     sudo make install
 
 RUN rm -fr /tmp/*
-
-RUN apt install xauth
-
-# TODO somehow it was already installed ._.
 
 #RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - && \
 #    apt install -y nodejs

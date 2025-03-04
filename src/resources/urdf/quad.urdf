@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+
+<!-- adapted from Daniel Mellinger, Nathan Michael, Vijay Kumar, "Trajectory Generation and Control for Precise Aggressive Maneuvers with Quadrotors" -->
+
+<robot xmlns="http://drake.mit.edu"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://drake.mit.edu ../../../../pods/drake/doc/drakeURDF.xsd" name="quadrotor">
+
+  <material name="colors_primary">
+    <color rgba="0.8125 0.46 0.492 1"/>
+  </material>
+
+  <material name="colors_secondary">
+    <color rgba="0.3007 0.9765 0.922 1"/>
+  </material>
+
+  <material name="colors_secondary2">
+    <color rgba="0.8 0.99 0.9765 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <link name="base_link">
+
+    <visual>
+      <origin rpy="1.57079 1.57079 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://resources/meshes/drone_adapted.stl" scale="0.12 0.12 0.12"/>
+      </geometry>
+      <material name="colors_secondary"/>
+    </visual>
+    <visual>
+      <origin rpy="1.57079 -1.57079 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://resources/meshes/drone_location_indicator.stl" scale="0.12 0.12 0.12"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius=".1" length=".06"/>
+      </geometry>
+    </collision>      
+  </link>
+  <link name="camera">
+    <parent link="base_link"/>
+  </link>
+  <joint name="base_to_camera" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera"/>
+  </joint>
+  <frame link="base_link" name="body" rpy="0 0 0" xyz="0 0 0" />
+  <frame link="camera" name="camera1" rpy="0 0 0" xyz="0.3 0 0" />
+</robot>

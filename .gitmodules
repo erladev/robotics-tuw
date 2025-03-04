@@ -13,3 +13,9 @@
 [submodule "src/socket.io-client-cpp"]
 	path = src/socket.io-client-cpp
 	url = https://github.com/shinsumicco/socket.io-client-cpp.git
+[submodule "src/rviz_panel_tutorial"]
+	path = src/rviz_panel_tutorial
+	url = https://github.com/MetroRobots/rviz_panel_tutorial.git
+[submodule "src/odom_to_tf_ros2"]
+	path = src/odom_to_tf_ros2
+	url = https://github.com/gstavrinos/odom_to_tf_ros2.git
