@@ -37,5 +37,10 @@ RUN cd /tmp/socket_publisher && \
 
 RUN rm -fr /tmp/*
 
+# add ROS to bashrc
+RUN echo ". /opt/ros/humble/setup.bash" >> /root/.bashrc && \
+    echo "test -f /workspace/install/setup.bash && . /workspace/install/setup.bash" >> /root/.bashrc
+
+
 #RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - && \
 #    apt install -y nodejs
