@@ -13,10 +13,16 @@
 #include "geometry_msgs/msg/quaternion.hpp"
 
 #include "rviz_common/tool.hpp"
+#include "rviz_common/display_context.hpp"
 #include "rviz_rendering/viewport_projection_finder.hpp"
 #include "rviz_rendering/objects/shape.hpp"
 
+#include "tf2_msgs/msg/tf_message.hpp"
+#include <tf2_ros/message_filter.h>
+#include <message_filters/subscriber.h>
+
 #include "rviz_enhanced_gui_plugins/visibility_control.hpp"
+
 
 namespace rviz_rendering {
     class BillboardLine;
@@ -41,6 +47,12 @@ namespace rviz_enhanced_gui_plugins {
             Ogre::SceneNode * scene_node_;
             // std::shared_ptr<rviz::BillboardLine> height_indicator_line_; //TODO
             std::shared_ptr<rviz_rendering::Shape> indicator1_;
+            rclcpp::Subscription<tf2_msgs::msg::TFMessage>::SharedPtr subscription_;
+
+            std::shared_ptr<tf2_ros::MessageFilter<tf2_msgs::msg::TFMessage, rviz_common::transformation::FrameTransformer>> tf_filter_;
+
+
+            void incomingMessage(const tf2_msgs::msg::TFMessage::ConstSharedPtr msg);
     };
 }
 
