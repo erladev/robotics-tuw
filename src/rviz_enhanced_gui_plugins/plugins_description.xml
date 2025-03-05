@@ -1,0 +1,11 @@
+<library path="rviz_enhanced_gui_plugins">
+    <class
+        name="rviz_enhanced_gui_plugins/RtsPoseTool"
+        type="rviz_enhanced_gui_plugins::RtsPoseTool"
+        base_class_type="rviz_common::Tool"
+    >
+        <description>
+            RTS-like goto-position command tool.
+        </description>
+  </class>
+</library>

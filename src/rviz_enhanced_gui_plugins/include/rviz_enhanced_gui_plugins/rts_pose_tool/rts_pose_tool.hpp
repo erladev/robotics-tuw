@@ -14,14 +14,16 @@
 
 #include "rviz_common/tool.hpp"
 #include "rviz_rendering/viewport_projection_finder.hpp"
+#include "rviz_rendering/objects/shape.hpp"
 
-// TODO reenable visibility control
-// #include "rviz_default_plugins/visibility_control.hpp"
+#include "rviz_enhanced_gui_plugins/visibility_control.hpp"
 
-// TODO rviz_rendering/arrow namespace??
+namespace rviz_rendering {
+    class BillboardLine;
+}
 
-namespace rviz_enhanced_plugins {
-    class RtsPoseTool: public rviz_common::Tool {
+namespace rviz_enhanced_gui_plugins {
+    class RVIZ_ENHANCED_GUI_PLUGINS_PUBLIC RtsPoseTool : public rviz_common::Tool {
         public:
             RtsPoseTool();
             ~RtsPoseTool() override;
@@ -33,7 +35,12 @@ namespace rviz_enhanced_plugins {
 
             int processMouseEvent(rviz_common::ViewportMouseEvent & event) override;
 
-        // TODO protected, private blocks
+        private:
+            std::shared_ptr<rviz_rendering::ViewportProjectionFinder> projection_finder_;
+
+            Ogre::SceneNode * scene_node_;
+            // std::shared_ptr<rviz::BillboardLine> height_indicator_line_; //TODO
+            std::shared_ptr<rviz_rendering::Shape> indicator1_;
     };
 }
 

@@ -2,14 +2,11 @@ cmake_minimum_required(VERSION 3.10)
 project(rviz_enhanced_gui_plugins)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
+  add_compile_options(-Wall -Wextra -Wpedantic -Wnon-virtual-dtor -Woverloaded-virtual -Wno-undef)
 endif()
 
 # find dependencies
-find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(ament_cmake_ros REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -22,7 +19,6 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
 
 find_package(rviz_common REQUIRED)
 find_package(rviz_rendering REQUIRED)
@@ -63,7 +59,7 @@ set(rviz_enhanced_gui_plugins_source_files
   src/rviz_enhanced_gui_plugins/rts_pose_tool/rts_pose_tool.cpp
 )
 
-add_library(rviz_enhanced_gui_plugins SHARED
+add_library(rviz_enhanced_gui_plugins
   ${rviz_enhanced_gui_plugins_moc_files}
   ${rviz_enhanced_gui_plugins_source_files}
 )
@@ -93,6 +89,12 @@ target_link_libraries(rviz_enhanced_gui_plugins PUBLIC
   urdf::urdf
   ${visualization_msgs_TARGETS}
 )
+target_compile_definitions(rviz_enhanced_gui_plugins PRIVATE "RVIZ_ENHANCED_GUI_PLUGINS_BUILDING_LIBRARY")
+
+pluginlib_export_plugin_description_file(rviz_enhanced_gui_plugins plugins_description.xml)
+
+ament_export_include_directories("include/${PROJECT_NAME}")
+ament_export_libraries(rviz_enhanced_gui_plugins)
 
 ament_export_dependencies(
   geometry_msgs
@@ -112,6 +114,15 @@ ament_export_dependencies(
   tf2_ros
   urdf
   visualization_msgs
+  pluginlib
+)
+
+install(
+  TARGETS rviz_enhanced_gui_plugins
+  EXPORT rviz_enhanced_gui_plugins
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 ament_package()
