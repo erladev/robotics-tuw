@@ -35,6 +35,7 @@ namespace rviz_enhanced_gui_plugins {
     : rviz_common::Tool(), indicator1_(nullptr) {
         projection_finder_ = std::make_shared<rviz_rendering::ViewportProjectionFinder>();
         scene_node_ = nullptr;
+        //map_height = 0;
     }
 
     RtsPoseTool::~RtsPoseTool() = default;
@@ -43,20 +44,8 @@ namespace rviz_enhanced_gui_plugins {
         // TODO node should almost definitely be stored
         rclcpp::Node::SharedPtr node =
             context_->getRosNodeAbstraction().lock()->get_raw_node();
-        std::string target_frame = "/tf"; //TODO right frame?
-        
-        tf2_buffer_ = std::make_shared<tf2_ros::Buffer>(node->get_clock());
-        auto timer_interface = std::make_shared<tf2_ros::CreateTimerROS>(
-            node->get_node_base_interface(),
-            node->get_node_timers_interface());
-            tf2_buffer_->setCreateTimerInterface(timer_interface);
-        tf2_listener_ =
-            std::make_shared<tf2_ros::TransformListener>(*tf2_buffer_);
-        //tf2_filter_->registerCallback(&RtsPoseTool::incomingMessage);
-        tf2_filter_->registerCallback([this](const tf2_msgs::msg::TFMessage::ConstSharedPtr message) {incomingMessage(message);});
-//        [this](const tf2_msgs::msg::TFMessage::ConstSharedPtr message) {}
-
-
+        subscription_ = node->create_subscription<tf2_msgs::msg::TFMessage>(
+            "/tf", 10, std::bind(&RtsPoseTool::incomingMessage, this, std::placeholders::_1));
 
 
         scene_node_ = scene_manager_->getRootSceneNode()->createChildSceneNode();
@@ -83,7 +72,8 @@ namespace rviz_enhanced_gui_plugins {
         return 0;
     }
 
-    void incomingMessage(const tf2_msgs::msg::TFMessage::ConstSharedPtr msg) {
+    void RtsPoseTool::incomingMessage(const tf2_msgs::msg::TFMessage& msg) {
+    //    setstate("Message Received!");
     }
 }
 

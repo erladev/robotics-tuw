@@ -47,13 +47,10 @@ namespace rviz_enhanced_gui_plugins {
             Ogre::SceneNode * scene_node_;
             // std::shared_ptr<rviz::BillboardLine> height_indicator_line_; //TODO
             std::shared_ptr<rviz_rendering::Shape> indicator1_;
-            // rclcpp::Subscription<tf2_msgs::msg::TFMessage>::SharedPtr subscription_;
-            std::shared_ptr<tf2_ros::Buffer> tf2_buffer_;
-            message_filters::Subscriber<tf2_msgs::msg::TFMessage> filter_subscriber_;
-            std::shared_ptr<tf2_ros::MessageFilter<tf2_msgs::msg::TFMessage, rviz_common::transformation::FrameTransformer>> tf2_filter_;
-            std::shared_ptr<tf2_ros::TransformListener> tf2_listener_;
+            rclcpp::Subscription<tf2_msgs::msg::TFMessage>::SharedPtr subscription_;
+            
 
-            void incomingMessage(const tf2_msgs::msg::TFMessage::ConstSharedPtr msg);
+            void incomingMessage(const tf2_msgs::msg::TFMessage& msg);
     };
 }
 
