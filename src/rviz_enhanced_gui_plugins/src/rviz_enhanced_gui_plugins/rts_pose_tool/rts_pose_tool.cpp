@@ -19,8 +19,15 @@
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 
+#include "tf2_ros/buffer.h"
+#include "tf2_ros/create_timer_ros.h"
+#include "tf2_ros/message_filter.h"
+#include "tf2_ros/transform_listener.h"
+
 #include "rclcpp/node.hpp"
 #include "rclcpp/qos.hpp"
+
+#include <message_filters/subscriber.h>
 
 
 namespace rviz_enhanced_gui_plugins {
@@ -33,23 +40,24 @@ namespace rviz_enhanced_gui_plugins {
     RtsPoseTool::~RtsPoseTool() = default;
 
     void RtsPoseTool::onInitialize() {
-        rclcpp::Node::SharedPtr raw_node =
+        // TODO node should almost definitely be stored
+        rclcpp::Node::SharedPtr node =
             context_->getRosNodeAbstraction().lock()->get_raw_node();
-        rclcpp::QoS qos_profile(5);
-        rclcpp::SubscriptionOptions sub_opts;
-        subscription_ =
-            raw_node->template create_subscription<tf2_msgs::msg::TFMessage>(
-            "/tf",
-            qos_profile,
-            [this](const typename tf2_msgs::msg::TFMessage::ConstSharedPtr message) {incomingMessage(message);},
-            sub_opts);
-        tf_filter_ =
-            std::make_shared<tf2_ros::MessageFilter<tf2_msgs::msg::TFMessage, rviz_common::transformation::FrameTransformer>>(
-            *context_->getFrameManager()->getTransformer(),
-            "map",
-            256,
-            raw_node);
-        //tf_filter_->connectInput(*subscription_);
+        std::string target_frame = "/tf"; //TODO right frame?
+        
+        tf2_buffer_ = std::make_shared<tf2_ros::Buffer>(node->get_clock());
+        auto timer_interface = std::make_shared<tf2_ros::CreateTimerROS>(
+            node->get_node_base_interface(),
+            node->get_node_timers_interface());
+            tf2_buffer_->setCreateTimerInterface(timer_interface);
+        tf2_listener_ =
+            std::make_shared<tf2_ros::TransformListener>(*tf2_buffer_);
+        //tf2_filter_->registerCallback(&RtsPoseTool::incomingMessage);
+        tf2_filter_->registerCallback([this](const tf2_msgs::msg::TFMessage::ConstSharedPtr message) {incomingMessage(message);});
+//        [this](const tf2_msgs::msg::TFMessage::ConstSharedPtr message) {}
+
+
+
 
         scene_node_ = scene_manager_->getRootSceneNode()->createChildSceneNode();
         indicator1_ = std::make_shared<rviz_rendering::Shape>(
