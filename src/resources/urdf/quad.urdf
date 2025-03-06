@@ -7,15 +7,7 @@
  xsi:schemaLocation="http://drake.mit.edu ../../../../pods/drake/doc/drakeURDF.xsd" name="quadrotor">
 
   <material name="colors_primary">
-    <color rgba="0.8125 0.46 0.492 1"/>
-  </material>
-
-  <material name="colors_secondary">
-    <color rgba="0.3007 0.9765 0.922 1"/>
-  </material>
-
-  <material name="colors_secondary2">
-    <color rgba="0.8 0.99 0.9765 1"/>
+    <color rgba="0.88671875 0.37109375 0.265625 1"/>
   </material>
 
   <material name="white">
@@ -29,7 +21,7 @@
       <geometry>
         <mesh filename="package://resources/meshes/drone_adapted.stl" scale="0.12 0.12 0.12"/>
       </geometry>
-      <material name="colors_secondary"/>
+      <material name="colors_primary"/>
     </visual>
     <visual>
       <origin rpy="1.57079 -1.57079 0" xyz="0 0 0"/>
