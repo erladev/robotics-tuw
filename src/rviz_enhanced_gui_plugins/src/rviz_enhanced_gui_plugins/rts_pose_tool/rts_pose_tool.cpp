@@ -15,6 +15,7 @@
 #include "rviz_common/logging.hpp"
 #include "rviz_common/render_panel.hpp"
 #include "rviz_common/viewport_mouse_event.hpp"
+#include "rviz_common/validate_floats.hpp"
 
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
@@ -35,7 +36,7 @@ namespace rviz_enhanced_gui_plugins {
     : rviz_common::Tool(), indicator1_(nullptr) {
         projection_finder_ = std::make_shared<rviz_rendering::ViewportProjectionFinder>();
         scene_node_ = nullptr;
-        //map_height = 0;
+        map_height = 0;
     }
 
     RtsPoseTool::~RtsPoseTool() = default;
@@ -68,12 +69,24 @@ namespace rviz_enhanced_gui_plugins {
     int RtsPoseTool::processMouseEvent(rviz_common::ViewportMouseEvent & event) {
         auto point_projection_on_xy_plane = projection_finder_->getViewportPointProjectionOnXYPlane(
             event.panel->getRenderWindow(), event.x, event.y);
-        indicator1_->setPosition(Ogre::Vector3(point_projection_on_xy_plane.second));
+        auto position = Ogre::Vector3(point_projection_on_xy_plane.second);
+        position.z = map_height;
+        indicator1_->setPosition(position);
         return 0;
     }
 
     void RtsPoseTool::incomingMessage(const tf2_msgs::msg::TFMessage& msg) {
     //    setstate("Message Received!");
+        if (msg.transforms[0].header.frame_id == "map"
+            && msg.transforms[0].child_frame_id ==   "odom"
+            && rviz_common::validateFloats(msg.transforms[0].transform.translation.z)) {
+            map_height = msg.transforms[0].transform.translation.z;
+            auto position = indicator1_->getPosition();
+            position.z = map_height;
+            indicator1_->setPosition(position);
+           // context_->queueRender();
+            
+        }
     }
 }
 

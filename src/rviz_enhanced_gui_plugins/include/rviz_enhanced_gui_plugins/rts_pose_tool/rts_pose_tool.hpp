@@ -49,6 +49,7 @@ namespace rviz_enhanced_gui_plugins {
             std::shared_ptr<rviz_rendering::Shape> indicator1_;
             rclcpp::Subscription<tf2_msgs::msg::TFMessage>::SharedPtr subscription_;
             
+            float map_height;
 
             void incomingMessage(const tf2_msgs::msg::TFMessage& msg);
     };
