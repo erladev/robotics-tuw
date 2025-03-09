@@ -1,0 +1,8 @@
+string ACTION_TAKEOFF="takeoff"
+string ACTION_LAND="land"
+string ACTION_EMERG="emergency"
+string ACTION_STOP="stop"
+
+string action
+---
+DroneCmdResponse response
