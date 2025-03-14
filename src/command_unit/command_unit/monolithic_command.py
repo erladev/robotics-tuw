@@ -9,7 +9,7 @@ import tf2_geometry_msgs
 
 from std_msgs.msg import String as StringMsg
 import geometry_msgs.msg
-from drone_system_msgs.msg import DroneCommand
+from drone_system_msgs.msg import DroneCommand, DroneCommandFlags
 
 
 class Control:
@@ -23,8 +23,8 @@ class Control:
         #node.create_subscription()
         self.logger = node.get_logger()
         self.action_sub = node.create_subscription(
-            StringMsg,
-            '/drone_gui/action',
+            DroneCommand,
+            '/gui/actions',
             self.on_action_msg,
             2)
         self.goal_pose_sub = node.create_subscription(
@@ -33,7 +33,16 @@ class Control:
             self.on_goal_pose,
             2
         )
+        self.flags_pub = node.create_publisher(DroneCommandFlags, '/cmd/flags', 10)
+        self.publish_flags()
     
+    def publish_flags(self):
+        msg = DroneCommandFlags()
+        msg.not_airborne = self.not_airborne
+        msg.emergency_set = self.emergency_set
+        msg.offline = self.offline
+        self.flags_pub.publish(msg)
+
     def is_exception_state(self):
         return self.offline or self.not_airborne or self.emergency_set
 
@@ -57,19 +66,22 @@ class Control:
                 else: return False
             case DroneCommand.ACTION_STOP:
                 return not (self.offline or self.emergency_set)
-            case "reset_emerg":
+            case DroneCommand.ACTION_CLR_EMERG:
                 if not self.offline:
                     self.emergency_set = False
                     return True
                 else: return False
 
+
         def __str__(self):
             return str(self.__dict__)
 
     def on_action_msg(self, msg):
+        action = msg.action # currently only using action field
         # move_rel/rotate_rel are not directly implemented, goalPose instead
-        s_ok = self.on_action(msg.data)
-        self.logger.info(f"Command {msg.data} is ok: {s_ok}")
+        s_ok = self.on_action(action)
+        self.publish_flags()
+        self.logger.info(f"Command {action} is ok: {s_ok}")
     
     def on_goal_pose(self, msg):
         if self.is_exception_state():
