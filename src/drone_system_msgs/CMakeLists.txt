@@ -10,11 +10,8 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  msg/DroneCmdResponse.msg
   msg/DroneNativeStatus.msg
-  srv/DroneRotateCmd.srv
-  srv/DroneMoveCmd.srv
-  srv/DroneActionCmd.srv
+  srv/DroneCommand.srv
 )
 
 if(BUILD_TESTING)
