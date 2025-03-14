@@ -49,6 +49,8 @@
 #include <rviz_common/panel.hpp>
 #include <rviz_common/ros_integration/ros_node_abstraction_iface.hpp>
 #include <std_msgs/msg/string.hpp>
+#include <drone_system_msgs/msg/drone_command_flags.hpp>
+#include <drone_system_msgs/msg/drone_command.hpp>
 
 namespace rviz_panel_tutorial
 {
@@ -63,10 +65,15 @@ public:
 
 protected:
   std::shared_ptr<rviz_common::ros_integration::RosNodeAbstractionIface> node_ptr_;
-  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
-  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+  rclcpp::Subscription<drone_system_msgs::msg::DroneCommandFlags>::SharedPtr cmd_flags_subscription_;
+  rclcpp::Publisher<drone_system_msgs::msg
+  ::DroneCommand>::SharedPtr cmd_publisher_;
 
-  void topicCallback(const std_msgs::msg::String& msg);
+
+
+  void droneCommandFlagsCallback(const drone_system_msgs::msg::DroneCommandFlags& msg);
+  void onButtonPress(const std::string& str);
+
   void setupUi(QWidget *widget);
   void retranslateUi(QWidget *widget);
 
@@ -83,6 +90,7 @@ protected:
   QPushButton *pushButton_6;
   QVBoxLayout *verticalLayout;
   QLabel *label_2;
+  QLabel *label_3;
   QLabel *label;
   QTextBrowser *textBrowser;
 };

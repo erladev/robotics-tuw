@@ -9,7 +9,7 @@ import tf2_geometry_msgs
 
 from std_msgs.msg import String as StringMsg
 import geometry_msgs.msg
-from drone_system_msgs.srv import DroneCommand
+from drone_system_msgs.msg import DroneCommand
 
 
 class Control:
@@ -40,22 +40,22 @@ class Control:
     # handle action, change state, return false to inhibit control commands based on action
     def on_action(self, action):
         match action:
-            case DroneCommand.Request.ACTION_TAKEOFF:
+            case DroneCommand.ACTION_TAKEOFF:
                 if not (self.offline or self.emergency_set):
                     self.not_airborne = False
                     return True
                 else: return False
-            case DroneCommand.Request.ACTION_LAND:
+            case DroneCommand.ACTION_LAND:
                 if not (self.offline or self.not_airborne or self.emergency_set):
                     self.not_airborne = True
                     return True
                 else: return False
-            case DroneCommand.Request.ACTION_EMERG:
+            case DroneCommand.ACTION_EMERG:
                 if not self.offline:
                     self.emergency_set = True
                     return True
                 else: return False
-            case DroneCommand.Request.ACTION_STOP:
+            case DroneCommand.ACTION_STOP:
                 return not (self.offline or self.emergency_set)
             case "reset_emerg":
                 if not self.offline:

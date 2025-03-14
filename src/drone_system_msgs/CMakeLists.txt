@@ -12,7 +12,7 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   msg/DroneNativeStatus.msg
   msg/DroneCommandFlags.msg
-  srv/DroneCommand.srv
+  msg/DroneCommand.msg
 )
 
 if(BUILD_TESTING)

@@ -62,16 +62,47 @@ void DemoPanel::onInitialize()
   // Access the abstract ROS Node and
   // in the process lock it for exclusive use until the method is done.
   node_ptr_ = getDisplayContext()->getRosNodeAbstraction().lock();
+  rclcpp::Node::SharedPtr node = node_ptr_->get_raw_node();
+  cmd_flags_subscription_ = node->create_subscription<drone_system_msgs::msg::DroneCommandFlags>(
+    "/cmd/flags", 10, std::bind(&DemoPanel::droneCommandFlagsCallback, this, std::placeholders::_1));
+  cmd_publisher_ = node->create_publisher<drone_system_msgs::msg
+  ::DroneCommand>("/gui/actions", 10);
 
-  // Get a pointer to the familiar rclcpp::Node for making subscriptions/publishers
-  // (as per normal rclcpp code)
+  QObject::connect(pushButton, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_EMERG);});
+  QObject::connect(pushButton_2, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg ::DroneCommand::ACTION_TAKEOFF);});
+  QObject::connect(pushButton_3, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_LAND);});
+  QObject::connect(pushButton_4, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_CLR_EMERG);});
+  QObject::connect(pushButton_5, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_STOP);});
 }
 
 // When the subscriber gets a message, this callback is triggered,
 // and then we copy its data into the widget's label
-void DemoPanel::topicCallback(const std_msgs::msg::String& msg)
+void DemoPanel::droneCommandFlagsCallback(const drone_system_msgs::msg::DroneCommandFlags& msg)
 {
   //label_->setText(QString(msg.data.c_str()));
+  RCLCPP_INFO(node_ptr_->get_raw_node()->get_logger(), "recvb");
+  if (msg.offline) {
+    label->setStyleSheet(QString::fromUtf8("QLabel { background-color : darkorange; }"));
+  } else {
+    label->setStyleSheet(QString::fromUtf8(""));
+  }
+  if (msg.emergency_set) {
+    label_2->setStyleSheet(QString::fromUtf8("QLabel { background-color : darkorange; }"));
+  } else {
+    label_2->setStyleSheet(QString::fromUtf8(""));
+  }
+  if (msg.not_airborne) {
+    label_3->setStyleSheet(QString::fromUtf8("QLabel { background-color : darkorange; }"));
+  } else {
+    label_3->setStyleSheet(QString::fromUtf8(""));
+  }
+}
+
+void DemoPanel::onButtonPress(const std::string& cmd) {
+  // the simple commands use only the action field
+  auto message = drone_system_msgs::msg::DroneCommand();
+  message.action=cmd;
+  this->cmd_publisher_->publish(message);
 }
 
 
@@ -141,9 +172,14 @@ void DemoPanel::setupUi(QWidget *widget)
         label = new QLabel(widget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setAutoFillBackground(false);
-        label->setStyleSheet(QString::fromUtf8("QLabel { background-color : red; }"));
 
         verticalLayout->addWidget(label);
+
+        label_3 = new QLabel(widget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setAutoFillBackground(false);
+
+        verticalLayout->addWidget(label_3);
 
 
         horizontalLayout_2->addLayout(verticalLayout);
@@ -172,6 +208,7 @@ void DemoPanel::setupUi(QWidget *widget)
       pushButton_6->setText(QCoreApplication::translate("Form", "set height", nullptr));
       label_2->setText(QCoreApplication::translate("Form", "emerg", nullptr));
       label->setText(QCoreApplication::translate("Form", "offline", nullptr));
+      label_3->setText(QCoreApplication::translate("Form", "not airborne", nullptr));
     } // retranslateUi
 
 }  // namespace rviz_panel_tutorial
