@@ -7,6 +7,7 @@ import time
 
 HOST = ''
 PORT = 9000
+#PORT = 8890
 
 sock = None
 
@@ -15,13 +16,12 @@ def recv():
     print ("Listener is waiting for responses...")
     while True: 
         try:
-            data, server = sock.recvfrom(1518)
+            data, server = sock.recvfrom(1518) # thats buffer size
             print("UDP ",count," from ", server, ": ", data.decode(encoding="utf-8"))
             count += 1
         except Exception:
             print ('\nExit . . .\n')
             break
-
 
 def main():
     print('\r\n\r\nTello Control.\r\n')

@@ -11,9 +11,11 @@ services:
       - DISPLAY
       - QT_X11_NO_MITSHM=1
     command: "tail -f /dev/null"
-   # network_mode: host
+  # network_mode: host
     ports:
-      - 3001:3001
-      - 3000:3000
+      - 8889:8889/udp
+      - 8890:8890/udp
+      - 9000:9000/udp
+      - 11111:11111/udp
     #networks:
     #  - ppmrob
