@@ -71,7 +71,7 @@ void DemoPanel::onInitialize()
   QObject::connect(pushButton, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_EMERG);});
   QObject::connect(pushButton_2, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg ::DroneCommand::ACTION_TAKEOFF);});
   QObject::connect(pushButton_3, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_LAND);});
-  QObject::connect(pushButton_4, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_CLR_EMERG);});
+  // QObject::connect(pushButton_4, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_CLR_EMERG);}); // TODO no clear emergency command anymore
   QObject::connect(pushButton_5, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_STOP);});
 }
 
@@ -81,12 +81,12 @@ void DemoPanel::droneCommandFlagsCallback(const drone_system_msgs::msg::DroneCom
 {
   //label_->setText(QString(msg.data.c_str()));
   RCLCPP_INFO(node_ptr_->get_raw_node()->get_logger(), "recvb");
-  if (msg.offline) {
+  if (msg.not_connected) {
     label->setStyleSheet(QString::fromUtf8("QLabel { background-color : darkorange; }"));
   } else {
     label->setStyleSheet(QString::fromUtf8(""));
   }
-  if (msg.emergency_set) {
+  if (msg.emergency) {
     label_2->setStyleSheet(QString::fromUtf8("QLabel { background-color : darkorange; }"));
   } else {
     label_2->setStyleSheet(QString::fromUtf8(""));

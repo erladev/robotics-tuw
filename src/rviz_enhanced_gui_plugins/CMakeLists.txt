@@ -125,4 +125,11 @@ install(
   RUNTIME DESTINATION bin
 )
 
+install(FILES plugins_description.xml
+        DESTINATION share/${PROJECT_NAME}
+)
+
+pluginlib_export_plugin_description_file(rviz_common plugins_description.xml)
+
+
 ament_package()
