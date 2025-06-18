@@ -97,7 +97,7 @@ namespace rviz_enhanced_gui_plugins {
 
     void RtsPoseTool::publishMoveCommand() {
         auto message = drone_system_msgs::msg::DroneCommand();
-        message.action = drone_system_msgs::msg::DroneCommand::ACTION_MOVE_REL;
+        message.action = drone_system_msgs::msg::DroneCommand::ACTION_MOVE;
         message.x = goal_pos.x;
         message.y = goal_pos.y;
         message.z = goal_pos.z;

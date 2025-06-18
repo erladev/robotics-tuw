@@ -13,6 +13,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   msg/DroneNativeStatus.msg
   msg/DroneCommandFlags.msg
   msg/DroneCommand.msg
+  srv/DroneInterfaceCommand.srv
 )
 
 if(BUILD_TESTING)

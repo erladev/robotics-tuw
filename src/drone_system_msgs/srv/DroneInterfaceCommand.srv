@@ -1,0 +1,20 @@
+string DRONE_TAKEOFF="takeoff"
+string DRONE_LAND="land"
+string DRONE_EMERG="emergency"
+string DRONE_STOP="stop"
+string DRONE_MOVE="move_rel"
+string DRONE_ROTATE="rotate_rel"
+
+string action
+
+float32 angle
+
+float32 x
+float32 y
+float32 z
+---
+
+string STATUS_SUCCESS="success"
+string STATUS_FAIL="fail"
+
+string status

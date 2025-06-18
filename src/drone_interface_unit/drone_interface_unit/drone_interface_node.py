@@ -1,16 +1,16 @@
 import rclpy
 from rclpy.node import Node
 
-from drone_system_msgs.msg import DroneCommand
+from drone_system_msgs.srv import DroneInterfaceCommand
 
 class DroneInterfaceNode(Node):
         def __init__(self):
             super().__init__("drone_interface_node")
-            self.drone_command_srv = self.create_service(DroneCommand, 'drone_cmd',
+            self.drone_command_srv = self.create_service(DroneInterfaceCommand, '/drone/cmd',
             self.drone_command_srv_callback)
         
         def drone_command_srv_callback(self, request, response):
-            response.status = DroneCommand.STATUS_SUCCESS
+            response.status = DroneInterfaceCommand.Response.STATUS_SUCCESS
             return response
 
 
