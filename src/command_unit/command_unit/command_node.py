@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 
-from drone_system_msgs.srv import DroneCommand
+from drone_system_msgs.msg import DroneCommand
 import command_unit.monolithic_command as monolithic_command
 
 class CommandNode(Node):

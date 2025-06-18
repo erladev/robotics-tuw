@@ -39,8 +39,8 @@ class Control:
     def publish_flags(self):
         msg = DroneCommandFlags()
         msg.not_airborne = self.not_airborne
-        msg.emergency_set = self.emergency_set
-        msg.offline = self.offline
+        msg.emergency = self.emergency_set
+        msg.not_connected = self.offline
         self.flags_pub.publish(msg)
 
     def is_exception_state(self):
