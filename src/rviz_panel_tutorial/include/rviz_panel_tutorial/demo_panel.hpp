@@ -74,6 +74,8 @@ protected:
   void droneCommandFlagsCallback(const drone_system_msgs::msg::DroneCommandFlags& msg);
   void onButtonPress(const std::string& str);
 
+  void onSetHeight();
+
   void setupUi(QWidget *widget);
   void retranslateUi(QWidget *widget);
 
@@ -82,7 +84,7 @@ protected:
   QVBoxLayout *verticalLayout_2;
   QPushButton *pushButton;
   QPushButton *pushButton_5;
-  QPushButton *pushButton_4;
+  //QPushButton *pushButton_4;
   QPushButton *pushButton_3;
   QPushButton *pushButton_2;
   QHBoxLayout *horizontalLayout;

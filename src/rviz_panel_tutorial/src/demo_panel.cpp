@@ -73,6 +73,8 @@ void DemoPanel::onInitialize()
   QObject::connect(pushButton_3, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_LAND);});
   // QObject::connect(pushButton_4, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_CLR_EMERG);}); // TODO no clear emergency command anymore
   QObject::connect(pushButton_5, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_STOP);});
+
+  QObject::connect(pushButton_6, &QPushButton::released, this, [this] {this->onSetHeight();});
 }
 
 // When the subscriber gets a message, this callback is triggered,
@@ -105,6 +107,13 @@ void DemoPanel::onButtonPress(const std::string& cmd) {
   this->cmd_publisher_->publish(message);
 }
 
+void DemoPanel::onSetHeight() {
+  auto message = drone_system_msgs::msg::DroneCommand();
+  message.action = drone_system_msgs::msg::DroneCommand::ACTION_ALTITUDE;
+  message.z = spinBox->value();
+  this->cmd_publisher_->publish(message);
+}
+
 
 void DemoPanel::setupUi(QWidget *widget)
     {
@@ -127,10 +136,10 @@ void DemoPanel::setupUi(QWidget *widget)
 
         verticalLayout_2->addWidget(pushButton_5);
 
-        pushButton_4 = new QPushButton(widget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        //pushButton_4 = new QPushButton(widget);
+        //pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
 
-        verticalLayout_2->addWidget(pushButton_4);
+        //verticalLayout_2->addWidget(pushButton_4);
 
         pushButton_3 = new QPushButton(widget);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
@@ -202,7 +211,7 @@ void DemoPanel::setupUi(QWidget *widget)
     {
       pushButton->setText(QCoreApplication::translate("Form", "emergency", nullptr));
       pushButton_5->setText(QCoreApplication::translate("Form", "stop", nullptr));
-      pushButton_4->setText(QCoreApplication::translate("Form", "clear emerg", nullptr));
+      //pushButton_4->setText(QCoreApplication::translate("Form", "clear emerg", nullptr));
       pushButton_3->setText(QCoreApplication::translate("Form", "land", nullptr));
       pushButton_2->setText(QCoreApplication::translate("Form", "takeoff", nullptr));
       pushButton_6->setText(QCoreApplication::translate("Form", "set height", nullptr));
