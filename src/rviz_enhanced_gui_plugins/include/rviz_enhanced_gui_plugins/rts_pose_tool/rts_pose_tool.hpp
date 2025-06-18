@@ -23,17 +23,10 @@
 #include <message_filters/subscriber.h>
 
 #include "rviz_enhanced_gui_plugins/visibility_control.hpp"
+#include <drone_system_msgs/msg/drone_command_flags.hpp>
+#include <drone_system_msgs/msg/drone_command.hpp>
 
-/*
->>> a
-(0.5625, 0.23828125, 0.171875)
->>> b
-(0.109375, 0.34765625, 0.39453125)
->>> c
-(0.88671875, 0.953125, 0.96484375)
->>> d
-(0.05859375, 0.19140625, 0.21875)
-*/
+
 
 #define COLOR1_R 0.88671875
 #define COLOR1_G 0.37109375
@@ -76,6 +69,7 @@ namespace rviz_enhanced_gui_plugins {
             std::shared_ptr<rviz_rendering::BillboardLine> indicator2_line_to_floor_;
             std::shared_ptr<rviz_rendering::BillboardLine> indicator3_line_from_drone_;
             rclcpp::Subscription<tf2_msgs::msg::TFMessage>::SharedPtr subscription_;
+            rclcpp::Publisher<drone_system_msgs::msg::DroneCommand>::SharedPtr cmd_publisher_;
             
             float fixed_plane_z;
             Ogre::Vector3 drone_pos;
@@ -85,6 +79,9 @@ namespace rviz_enhanced_gui_plugins {
             void incomingMessage(const tf2_msgs::msg::TFMessage& msg);
 
             void redraw_indicators();
+
+            void publishMoveCommand();
+
     };
 }
 

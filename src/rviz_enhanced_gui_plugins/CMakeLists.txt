@@ -46,6 +46,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(urdf REQUIRED)
 find_package(visualization_msgs REQUIRED)
+find_package(drone_system_msgs REQUIRED)
 
 set(rviz_enhanced_gui_plugins_headers_to_moc
   include/rviz_enhanced_gui_plugins/rts_pose_tool/rts_pose_tool.hpp
@@ -68,6 +69,7 @@ target_include_directories(rviz_enhanced_gui_plugins PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
   ${Qt5Widgets_INCLUDE_DIRS}
+  ${drone_system_msgs_INCLUDE_DIRS}
 )
 
 target_link_libraries(rviz_enhanced_gui_plugins PUBLIC
@@ -83,11 +85,13 @@ target_link_libraries(rviz_enhanced_gui_plugins PUBLIC
   rviz_ogre_vendor::OgreOverlay
   rviz_rendering::rviz_rendering
   ${sensor_msgs_TARGETS}
+  ${drone_system_msgs_TARGETS}
   tf2::tf2
   ${tf2_geometry_msgs_TARGETS}
   tf2_ros::tf2_ros
   urdf::urdf
   ${visualization_msgs_TARGETS}
+  
 )
 target_compile_definitions(rviz_enhanced_gui_plugins PRIVATE "RVIZ_ENHANCED_GUI_PLUGINS_BUILDING_LIBRARY")
 
@@ -114,6 +118,7 @@ ament_export_dependencies(
   tf2_ros
   urdf
   visualization_msgs
+  drone_system_msgs
   pluginlib
 )
 

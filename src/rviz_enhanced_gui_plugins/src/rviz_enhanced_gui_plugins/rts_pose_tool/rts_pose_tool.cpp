@@ -49,7 +49,7 @@ namespace rviz_enhanced_gui_plugins {
             context_->getRosNodeAbstraction().lock()->get_raw_node();
         subscription_ = node->create_subscription<tf2_msgs::msg::TFMessage>(
             "/tf", 10, std::bind(&RtsPoseTool::incomingMessage, this, std::placeholders::_1));
-
+        cmd_publisher_ = node->create_publisher<drone_system_msgs::msg::DroneCommand>("/gui/actions", 10);
 
         scene_node_ = scene_manager_->getRootSceneNode()->createChildSceneNode();
         indicator1_goal_pos_ball_ = std::make_shared<rviz_rendering::Shape>(
@@ -88,7 +88,20 @@ namespace rviz_enhanced_gui_plugins {
         position.z = drone_pos.z;
         goal_pos = position;
         redraw_indicators();
+        if (event.leftDown()) {
+            publishMoveCommand();
+            return Finished;
+        }
         return 0;
+    }
+
+    void RtsPoseTool::publishMoveCommand() {
+        auto message = drone_system_msgs::msg::DroneCommand();
+        message.action = drone_system_msgs::msg::DroneCommand::ACTION_MOVE_REL;
+        message.x = goal_pos.x;
+        message.y = goal_pos.y;
+        message.z = goal_pos.z;
+        this->cmd_publisher_->publish(message);
     }
 
     void RtsPoseTool::incomingMessage(const tf2_msgs::msg::TFMessage& msg) {
