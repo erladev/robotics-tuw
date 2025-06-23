@@ -75,6 +75,7 @@ void DemoPanel::onInitialize()
   QObject::connect(pushButton_5, &QPushButton::released, this, [this] {this->onButtonPress(drone_system_msgs::msg::DroneCommand::ACTION_STOP);});
 
   QObject::connect(pushButton_6, &QPushButton::released, this, [this] {this->onSetHeight();});
+  QObject::connect(pushButton_7, &QPushButton::released, this, [this] {this->onRotateCcw();});
 }
 
 // When the subscriber gets a message, this callback is triggered,
@@ -111,6 +112,13 @@ void DemoPanel::onSetHeight() {
   auto message = drone_system_msgs::msg::DroneCommand();
   message.action = drone_system_msgs::msg::DroneCommand::ACTION_ALTITUDE;
   message.z = spinBox->value();
+  this->cmd_publisher_->publish(message);
+}
+
+void DemoPanel::onRotateCcw() {
+  auto message = drone_system_msgs::msg::DroneCommand();
+  message.action = drone_system_msgs::msg::DroneCommand::ACTION_ROTATE_REL;
+  message.angle = spinBox_2->value();
   this->cmd_publisher_->publish(message);
 }
 
@@ -163,9 +171,28 @@ void DemoPanel::setupUi(QWidget *widget)
         pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
 
         horizontalLayout->addWidget(pushButton_6);
+        
+        // start hbox 2
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        spinBox_2 = new QSpinBox(widget);
+        spinBox_2->setObjectName(QString::fromUtf8("spinBox_2"));
+        spinBox_2->setMinimum(-170);
+        spinBox_2->setMaximum(170);
+        spinBox_2->setSingleStep(1);
+        spinBox_2->setValue(0);
+
+        horizontalLayout_3->addWidget(spinBox_2);
+
+        pushButton_7 = new QPushButton(widget);
+        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+
+        horizontalLayout_3->addWidget(pushButton_7);
 
 
+        // end hbox 2
         verticalLayout_2->addLayout(horizontalLayout);
+        verticalLayout_2->addLayout(horizontalLayout_3);
 
 
         horizontalLayout_2->addLayout(verticalLayout_2);
@@ -215,6 +242,7 @@ void DemoPanel::setupUi(QWidget *widget)
       pushButton_3->setText(QCoreApplication::translate("Form", "land", nullptr));
       pushButton_2->setText(QCoreApplication::translate("Form", "takeoff", nullptr));
       pushButton_6->setText(QCoreApplication::translate("Form", "set height", nullptr));
+      pushButton_7->setText(QCoreApplication::translate("Form", "turn ccw", nullptr));
       label_2->setText(QCoreApplication::translate("Form", "emerg", nullptr));
       label->setText(QCoreApplication::translate("Form", "offline", nullptr));
       label_3->setText(QCoreApplication::translate("Form", "not airborne", nullptr));

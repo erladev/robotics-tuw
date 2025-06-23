@@ -1,15 +1,21 @@
 from djitellopy import Tello
+import djitellopy
+import socket
+from threading import Thread, Lock
+
+import time
 
 # why on earth did python allow globals?!
 threads_initialized = False
-drones: Optional[dict] = {}
+drones = {}
 client_socket: socket.socket
 
 class MyTello(Tello):
     def __init__(self,
-                 host=TELLO_IP,
-                 retry_count=RETRY_COUNT,
-                 vs_udp=VS_UDP_PORT):
+                 host=Tello.TELLO_IP,
+                 retry_count=Tello.RETRY_COUNT,
+                 vs_udp=Tello.VS_UDP_PORT):
+
         self._lock = Lock() # custom lock
 
         global threads_initialized, client_socket, drones
@@ -34,6 +40,7 @@ class MyTello(Tello):
             state_receiver_thread.start()
 
             threads_initialized = True
+        
 
         drones[host] = {'responses': [], 'state': {}}
 

@@ -75,6 +75,8 @@ protected:
   void onButtonPress(const std::string& str);
 
   void onSetHeight();
+  void onRotateCcw();
+
 
   void setupUi(QWidget *widget);
   void retranslateUi(QWidget *widget);
@@ -90,6 +92,11 @@ protected:
   QHBoxLayout *horizontalLayout;
   QSpinBox *spinBox;
   QPushButton *pushButton_6;
+
+  QHBoxLayout *horizontalLayout_3;
+  QSpinBox *spinBox_2;
+  QPushButton *pushButton_7;
+
   QVBoxLayout *verticalLayout;
   QLabel *label_2;
   QLabel *label_3;
