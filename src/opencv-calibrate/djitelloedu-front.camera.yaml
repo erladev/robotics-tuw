@@ -1,12 +1,12 @@
-%YAML:1.0
----
-K: !!opencv-matrix
+#%YAML:1.0
+#---
+K: #!!opencv-matrix
    rows: 3
    cols: 3
    dt: d
    data: [ 930.51799427122262, 0., 496.97473215714263, 0.,
        931.36978522606023, 367.35950042641059, 0., 0., 1. ]
-D: !!opencv-matrix
+D: #!!opencv-matrix
    rows: 1
    cols: 5
    dt: d
