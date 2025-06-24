@@ -27,5 +27,3 @@ services:
     volumes:
       - ./src:/workspace/src
       - ./other:/workspace/other
-    #ports:
-    #  - 8889:8889/udp

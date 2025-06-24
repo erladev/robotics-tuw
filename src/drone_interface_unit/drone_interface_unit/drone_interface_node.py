@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
+from rclpy.callback_groups import ReentrantCallbackGroup
 from .djitellopy import Tello,TelloException
-
 
 from drone_system_msgs.srv import DroneInterfaceCommand
 
@@ -12,8 +12,11 @@ class DroneInterfaceNode(Node):
             self.tello.connect()
 
             self.logger = self.get_logger()
-            self.drone_command_srv = self.create_service(DroneInterfaceCommand, '/drone/cmd',
-            self.drone_command_srv_callback)
+            self.cb_group = ReentrantCallbackGroup()
+            self.drone_command_srv = self.create_service(
+                DroneInterfaceCommand, '/drone/cmd',
+                self.drone_command_srv_callback,
+                callback_group=self.cb_group)
         
         def drone_command_srv_callback(self, request, response):
             try:
@@ -36,11 +39,13 @@ class DroneInterfaceNode(Node):
                 response.status = DroneInterfaceCommand.Response.STATUS_FAIL
             return response
 
-
 def main():
     rclpy.init()
     node = DroneInterfaceNode()
-    rclpy.spin(node)
+    executor = rclpy.executors.MultiThreadedExecutor()
+    executor.add_node(node)
+    executor.spin()
+    node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
