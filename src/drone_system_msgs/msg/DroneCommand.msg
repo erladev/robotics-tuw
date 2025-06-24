@@ -12,7 +12,7 @@ string STATUS_FAIL="fail"
 
 string action
 
-float32 angle
+int32 angle
 
 float32 x
 float32 y

@@ -79,6 +79,13 @@ class MonolithicControl:
                 if self.is_exception_state():
                     return False
                 return self.abs_move_cmd(command, only_altitude=True)
+            case DroneCommand.ACTION_ROTATE_REL:
+                if self.is_exception_state():
+                    return False
+                req = DroneInterfaceCommand.Request()
+                req.action = DroneInterfaceCommand.Request.DRONE_ROTATE
+                req.angle = command.angle
+                return self.node.call_drone_if(req)
 
         def __str__(self):
             return str(self.__dict__)
