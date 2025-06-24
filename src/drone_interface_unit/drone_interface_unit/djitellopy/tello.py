@@ -425,7 +425,7 @@ class Tello:
         address = address_schema.format(ip=self.VS_UDP_IP, port=self.vs_udp_port)
         return address
 
-    def get_frame_read(self, with_queue = False, max_queue_len = 32) -> 'BackgroundFrameRead':
+    def get_frame_read(self, with_queue = False, with_hook=None, max_queue_len = 32) -> 'BackgroundFrameRead':
         """Get the BackgroundFrameRead object from the camera drone. Then, you just need to call
         backgroundFrameRead.frame to get the actual frame received by the drone.
         Returns:
@@ -433,7 +433,7 @@ class Tello:
         """
         if self.background_frame_read is None:
             address = self.get_udp_video_address()
-            self.background_frame_read = BackgroundFrameRead(self, address, with_queue, max_queue_len)
+            self.background_frame_read = BackgroundFrameRead(self, address, with_queue, with_hook, max_queue_len)
             self.background_frame_read.start()
         return self.background_frame_read
 
@@ -1057,12 +1057,13 @@ class BackgroundFrameRead:
     backgroundFrameRead.frame to get the current frame.
     """
 
-    def __init__(self, tello, address, with_queue = False, maxsize = 32):
+    def __init__(self, tello, address, with_queue = False, with_hook = None, maxsize = 32):
         self.address = address
         self.lock = Lock()
         self.frame = np.zeros([300, 400, 3], dtype=np.uint8)
         self.frames = deque([], maxsize)
         self.with_queue = with_queue
+        self.with_hook = with_hook
 
         # Try grabbing frame with PyAV
         # According to issue #90 the decoder might need some time
@@ -1088,7 +1089,9 @@ class BackgroundFrameRead:
         """
         try:
             for frame in self.container.decode(video=0):
-                if self.with_queue:
+                if self.with_hook is not None:
+                    self.with_hook(frame)
+                elif self.with_queue:
                     self.frames.append(np.array(frame.to_image()))
                 else:
                     self.frame = np.array(frame.to_image())
