@@ -3,7 +3,7 @@ FROM osrf/ros:humble-desktop-full
 RUN apt update && \
     apt upgrade -y --no-install-recommends
 
-RUN apt install -y autogen autoconf libtool ros-humble-libg2o vim xauth
+RUN apt install -y autogen autoconf libtool ros-humble-libg2o vim xauth python3-av
 
 copy ./src/socket.io-client-cpp/ /tmp/socket.io-client-cpp/
 

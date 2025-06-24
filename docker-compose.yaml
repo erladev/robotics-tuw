@@ -7,15 +7,25 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ./src:/workspace/src
+      - ./files:/workspace/files
     environment:
       - DISPLAY
       - QT_X11_NO_MITSHM=1
     command: "tail -f /dev/null"
   # network_mode: host
     ports:
-      - 8889:8889/udp
+    #  - 8889:8889/udp    # TODO comment back in for real drone
       - 8890:8890/udp
       - 9000:9000/udp
       - 11111:11111/udp
     #networks:
     #  - ppmrob
+  netcat-drone:
+    build:
+      dockerfile: ./Dockerfile.netcat
+    command: "tail -f /dev/null"
+    volumes:
+      - ./src:/workspace/src
+      - ./other:/workspace/other
+    #ports:
+    #  - 8889:8889/udp
