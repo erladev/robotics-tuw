@@ -71,7 +71,7 @@ class Tello:
 
     LOGGER = logging.getLogger('djitellopy')
     LOGGER.addHandler(HANDLER)
-    LOGGER.setLevel(logging.INFO)
+    LOGGER.setLevel(logging.DEBUG)
     # Use Tello.LOGGER.setLevel(logging.<LEVEL>) in YOUR CODE
     # to only receive logs of the desired level and higher
 

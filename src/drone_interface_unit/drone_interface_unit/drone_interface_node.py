@@ -1,7 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from .tello_ctrl_wrapper import MyTello
-from djitellopy import Tello,TelloException
+from .djitellopy import Tello,TelloException
 
 
 from drone_system_msgs.srv import DroneInterfaceCommand
@@ -9,7 +8,8 @@ from drone_system_msgs.srv import DroneInterfaceCommand
 class DroneInterfaceNode(Node):
         def __init__(self):
             super().__init__("drone_interface_node")
-            self.tello = Tello()
+            self.tello = Tello(host="172.18.0.2")
+            self.tello.connect()
 
             self.logger = self.get_logger()
             self.drone_command_srv = self.create_service(DroneInterfaceCommand, '/drone/cmd',

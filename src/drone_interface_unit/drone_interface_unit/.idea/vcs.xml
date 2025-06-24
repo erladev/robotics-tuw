@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../odom_to_tf_ros2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../socket.io-client-cpp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../socket.io-client-cpp/lib/asio" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../socket.io-client-cpp/lib/catch" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../socket.io-client-cpp/lib/rapidjson" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../socket.io-client-cpp/lib/rapidjson/thirdparty/gtest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../socket.io-client-cpp/lib/websocketpp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../socket_publisher" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../socket_viewer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../stella_vslam" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../stella_vslam/3rd/FBoW" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../stella_vslam/3rd/tinycolormap" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../stella_vslam_ros" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../stella_vslam_ros/3rd/filesystem" vcs="Git" />
+  </component>
+</project>
