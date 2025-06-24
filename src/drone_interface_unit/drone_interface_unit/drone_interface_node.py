@@ -44,9 +44,14 @@ def main():
     node = DroneInterfaceNode()
     executor = rclpy.executors.MultiThreadedExecutor()
     executor.add_node(node)
-    executor.spin()
-    node.destroy_node()
-    rclpy.shutdown()
+    try:
+        executor.spin()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        executor.shutdown()
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
