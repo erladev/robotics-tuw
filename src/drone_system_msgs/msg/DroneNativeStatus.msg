@@ -2,21 +2,18 @@ float32 agx
 float32 agy
 float32 agz
 
-float32 vgx
-float32 vgy
-float32 vgz
+int32 vgx
+int32 vgy
+int32 vgz
 
-float32 pitch
-float32 yaw
-float32 roll
+int32 pitch
+int32 yaw
+int32 roll
 
-float32 height
+int32 height
 float32 baro
 
-float32 templ
-float32 temph
-float32 bat
-float32 time_motor_on
-
-bool connection_established
-bool video_established
+int32 templ
+int32 temph
+int32 bat
+int32 time_motor_on

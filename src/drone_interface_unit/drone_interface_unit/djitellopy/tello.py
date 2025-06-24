@@ -101,7 +101,8 @@ class Tello:
     def __init__(self,
                  host=TELLO_IP,
                  retry_count=RETRY_COUNT,
-                 vs_udp=VS_UDP_PORT):
+                 vs_udp=VS_UDP_PORT,
+                 state_callback=None):
 
         global threads_initialized, client_socket, drones
 
@@ -110,6 +111,8 @@ class Tello:
         self.retry_count = retry_count
         self.last_received_command_timestamp = time.time()
         self.last_rc_control_timestamp = time.time()
+        self.state_callback = state_callback
+
 
         if not threads_initialized:
             # Run Tello command responses UDP receiver on background
@@ -120,7 +123,7 @@ class Tello:
             response_receiver_thread.start()
 
             # Run state UDP receiver on background
-            state_receiver_thread = Thread(target=Tello.udp_state_receiver)
+            state_receiver_thread = Thread(target=self.udp_state_receiver)
             state_receiver_thread.daemon = True
             state_receiver_thread.start()
 
@@ -171,8 +174,7 @@ class Tello:
                 Tello.LOGGER.error(e)
                 break
 
-    @staticmethod
-    def udp_state_receiver():
+    def udp_state_receiver(self):
         """Setup state UDP receiver. This method listens for state information from
         Tello. Must be run from a background thread in order to not block
         the main thread.
@@ -195,7 +197,8 @@ class Tello:
                 data = Tello.parse_state(data)
                 data['received_at'] = datetime.now()
                 drones[address]['state'] = data
-
+                if self.state_callback:
+                    self.state_callback()
             except Exception as e:
                 Tello.LOGGER.error(e)
                 break
