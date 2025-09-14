@@ -9,7 +9,7 @@ from std_msgs.msg import String as StringMsg
 import geometry_msgs.msg
 from drone_system_msgs.msg import DroneCommand, DroneCommandFlags
 from drone_system_msgs.srv import DroneInterfaceCommand
-import threading, time
+import threading, time, math
 
 class MonolithicControl:
     def __init__(self, node):
@@ -133,6 +133,21 @@ class MonolithicControl:
             if abs(req.x) < 20 and abs(req.y) < 20 and abs(req.z) < 20:
                 self.logger.info(f"cannot move, distance too small: {pose_rel}")
                 return False
+            distance = int(math.sqrt(req.x ** 2 + req.y ** 2))
+            if distance >= 100:
+                # rotate before repositioning
+                angle = int(math.degrees(math.atan2(req.y, req.x)))
+                req.x = distance
+                req.y = 0
+
+                r_req = DroneInterfaceCommand.Request()
+                r_req.action = DroneInterfaceCommand.Request.DRONE_ROTATE
+                r_req.angle = angle
+                result = self.node.call_drone_if(r_req)
+                if not result:
+                    self.logger.info(f"rotation command failed, cancelling move")
+                    return result
+
             return self.node.call_drone_if(req)
 
         except TransformException as ex:
