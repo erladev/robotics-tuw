@@ -1,0 +1,10 @@
+files/aist_living_lab_1.zip filter=lfs diff=lfs merge=lfs -text
+files/calibration-fairphone.zip filter=lfs diff=lfs merge=lfs -text
+files/pictures1_checkerboard.zip filter=lfs diff=lfs merge=lfs -text
+files/pictures1.zip filter=lfs diff=lfs merge=lfs -text
+files/pictures2-walk.zip filter=lfs diff=lfs merge=lfs -text
+files/pictures2.zip filter=lfs diff=lfs merge=lfs -text
+files/pictures3_simpleflight.zip filter=lfs diff=lfs merge=lfs -text
+files/pictures4_speeds.zip filter=lfs diff=lfs merge=lfs -text
+files/aist_living_lab_2.zip filter=lfs diff=lfs merge=lfs -text
+files/pictures1-calibration-board.zip filter=lfs diff=lfs merge=lfs -text
