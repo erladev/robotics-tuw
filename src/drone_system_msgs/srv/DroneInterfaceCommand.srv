@@ -16,5 +16,6 @@ float32 z
 
 string STATUS_SUCCESS="success"
 string STATUS_FAIL="fail"
+string STATUS_FAIL_OFFLINE="offline"
 
 string status

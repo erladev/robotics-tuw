@@ -45,6 +45,8 @@ class CommandNode(Node):
         while True:
             if future.done():
                 response = future.result()
+                if response.status == DroneInterfaceCommand.Response.STATUS_FAIL_OFFLINE:
+                    self.offline = True
                 return response.status == DroneInterfaceCommand.Response.STATUS_SUCCESS
             elif self.flag_preemption:
                 self.logger.info("drone interface call preempted.")

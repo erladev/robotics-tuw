@@ -1,0 +1,36 @@
+Camera:
+  color_order: RGB
+  cols: 960
+  cx: 496.9747321571426
+  cy: 367.3595004264106
+  fps: 10.0
+  fx: 930.5179942712226
+  fy: 931.3697852260602
+  k1: 0.013340078291218162
+  k2: -0.24757314058592067
+  k3: 0.7716248223379362
+  model: perspective
+  name: djitelloedufront
+  p1: -0.0010789868780166749
+  p2: 0.0018925717425099934
+  rows: 720
+  setup: monocular
+Feature:
+  ini_fast_threshold: 20
+  min_fast_threshold: 7
+  name: default ORB feature extraction setting
+  num_levels: 8
+  scale_factor: 1.2
+Initializer:
+  scaling_factor: 5.0
+Mapping:
+  baseline_dist_thr_ratio: 0.02
+  num_covisibilities_for_landmark_fusion: 20
+  num_covisibilities_for_landmark_generation: 20
+  redundant_obs_ratio_thr: 0.9
+Preprocessing:
+  min_size: 800
+System:
+  map_format: msgpack
+  num_grid_cols: 48
+  num_grid_rows: 27

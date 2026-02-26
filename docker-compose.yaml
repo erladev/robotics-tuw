@@ -2,8 +2,11 @@ services:
 # container for compiling everything
   ros-desktop-full:
     image: ros-desktop-custom2:latest  # osrf/ros:humble-desktop-full
+#    userns: keep-id
     build:
       dockerfile: ./Dockerfile
+    security_opt:
+      - "label=type:container_runtime_t"
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ./src:/workspace/src
@@ -13,18 +16,19 @@ services:
       - DISPLAY
       - QT_X11_NO_MITSHM=1
     command: "tail -f /dev/null"
-  # network_mode: host
+#  network_mode: host
     ports:
     #  - 8889:8889/udp    # TODO comment back in for real drone
       - 8890:8890/udp
       - 9000:9000/udp
       - 11111:11111/udp
-    #networks:
-    #  - ppmrob
-  #netcat-drone:
-  #  build:
-  #    dockerfile: ./Dockerfile.netcat
-  #  command: "tail -f /dev/null"
-  #  volumes:
-  #    - ./src:/workspace/src
-  #    - ./other:/workspace/other
+    links:
+      - "netcat-drone:netcat-drone"
+
+  netcat-drone:
+    build:
+      dockerfile: ./Dockerfile.netcat
+    command: "tail -f /dev/null"
+    volumes:
+      - ./src:/workspace/src
+      - ./other:/workspace/other

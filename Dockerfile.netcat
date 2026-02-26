@@ -1,2 +1,2 @@
 from ubuntu:18.04
-run apt update && apt install netcat -y
+run apt update && apt install python3 netcat -y

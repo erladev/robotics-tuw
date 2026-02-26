@@ -9,6 +9,9 @@ from drone_system_msgs.msg import DroneNativeStatus
 from drone_system_msgs.srv import DroneInterfaceCommand
 from sensor_msgs.msg import Image as ImageMsg
 
+#DRONE_IP="172.18.0.2"
+DRONE_IP="10.89.0.2"
+
 
 class DroneInterfaceNode(Node):
     def __init__(self):
@@ -19,7 +22,7 @@ class DroneInterfaceNode(Node):
         self.image_pub = self.create_publisher(ImageMsg, '/camera/raw', 10)
         self.cv_bridge = CvBridge()
 
-        self.tello = Tello(host="172.18.0.2", state_callback=self.publish_telemetry)
+        self.tello = Tello(host=DRONE_IP, state_callback=self.publish_telemetry)
         self.tello.connect()
         #self.tello.streamon()  # TODO
         #frame_read = self.tello.get_frame_read(with_hook = self.publish_image)
@@ -50,7 +53,11 @@ class DroneInterfaceNode(Node):
             response.status = DroneInterfaceCommand.Response.STATUS_SUCCESS
         except TelloException as e:
             self.logger.error("Failed to run command")
-            response.status = DroneInterfaceCommand.Response.STATUS_FAIL
+            cmd_timeout = "max retries exceeded" in str(e)
+            if cmd_timeout:
+                response.status = DroneInterfaceCommand.Response.STATUS_FAIL_OFFLINE
+            else:
+                response.status = DroneInterfaceCommand.Response.STATUS_FAIL
         return response
     
     def publish_telemetry(self):

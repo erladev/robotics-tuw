@@ -1,7 +1,16 @@
 import yaml
 import sys
 
+
+class SafeLoaderIgnoreUnknown(yaml.SafeLoader):
+    def ignore_unknown(self, node):
+        return None 
+
+SafeLoaderIgnoreUnknown.add_constructor(None, SafeLoaderIgnoreUnknown.ignore_unknown)
+
+
 with open(sys.argv[1]) as f:
+    f.readline()
     f.readline()
     data = yaml.safe_load(f)
 
