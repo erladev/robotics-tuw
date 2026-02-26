@@ -59,7 +59,9 @@ The rviz2 ui uses the following tools: image panel, pointcloud, robot model, cus
 The drone status panel subscribes to the statusflags topic and displays warnings accordingly; it also issues commands when the respective buttons are pressed.
 The rts pose tool additionally listens to the tf2 buffer to draw lines from the drone position to the clicked point; it projects on a 2d plane at the drones height, and issues absolute repositioning commands.
 
+
 ## Camera calibration and Stella-VSLAM config
+
 VSLAM systems must be configured with the type of camera to deal with the lens distortion. Opencv documents such a distortion model https://docs.opencv.org/2.4/doc/tutorials/calib3d/camera_calibration/camera_calibration.html, and there is a guide that helped with implementation, https://aliyasineser.medium.com/opencv-camera-calibration-e9a48bdd1844.
 The scripts reside in other/opencv-calibrate: calibrate.py performs calibration based on the tutorial, to_stella_config.py converts the former scripts output to a suitable stella_vslam config file.
 Distortion correction is measured by 2 matrices:
